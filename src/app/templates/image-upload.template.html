@@ -1,0 +1,23 @@
+<div class="container upload-image-popup">
+  <div class="row align-items-center">
+    <div class="col-4">
+      <svg-icon src="iconUpload"></svg-icon>
+    </div>
+    <div class="col-4">
+      <label class="btn btn-link">
+        Upload From PC
+        <input upload-file
+               type="file"
+               accept=".jpeg,.png,.gif"
+               style="display: none;"/>
+      </label>
+    </div>
+  </div>
+  <p ng-show="!uploadedImage">Selected image: None </p>
+  <p ng-show="uploadedImage">Seleted image: {{ uploadedImage.name }} </p>
+  <img ng-show="uploadedImage" id="uploaded-image" class="img-fluid" src="#">
+  <div class="row" style="justify-content: space-between; margin-top: 10px;">
+    <button class="btn p-1" ng-click="confirm(uploadedImage)">Add</button>
+    <button class="btn p-1" ng-click="closeThisDialog()">Cancel</button>
+  </div>
+</div>

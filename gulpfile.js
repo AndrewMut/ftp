@@ -8,16 +8,19 @@ var gulp = require('gulp'),
 var path = {
   build: {
     html: 'www/',
+    css: 'www/',
     js: 'www/js/',
     img: 'www/assets/images/'
   },
   src: {
-    html: 'src/app/*.html',
-    js: 'src/app/js/*.js',
+    html: 'src/app/**/*.html',
+    css: 'src/app/**/*.css',
+    js: 'src/app/js/**/*.js',
     img: 'src/assets/images/**/*.*'
   },
   watch: {
     html: 'src/app/**/*.html',
+    css: 'src/app/**/*.css',
     js: 'src/app/js/**/*.js',
     img: 'src/assets/images/**/*.*'
   },
@@ -42,26 +45,33 @@ gulp.task('clean', function (cb) {
 });
 
 gulp.task('html:build', function () {
-  gulp.src(path.src.html) 
+  gulp.src(path.src.html)
     .pipe(gulp.dest(path.build.html))
     .pipe(reload({stream: true}));
 });
 
+gulp.task('css:build', function () {
+  gulp.src(path.src.css)
+    .pipe(gulp.dest(path.build.css))
+    .pipe(reload({stream: true}));
+});
+
 gulp.task('js:build', function () {
-  gulp.src(path.src.js) 
-    .pipe(sourcemaps.init()) 
+  gulp.src(path.src.js)
+    .pipe(sourcemaps.init())
     .pipe(gulp.dest(path.build.js))
     .pipe(reload({stream: true}));
 });
 
 gulp.task('image:build', function () {
-  gulp.src(path.src.img) 
+  gulp.src(path.src.img)
     .pipe(gulp.dest(path.build.img))
     .pipe(reload({stream: true}));
 });
 
 gulp.task('build', [
   'html:build',
+  'css:build',
   'js:build',
   'image:build'
 ]);
@@ -69,6 +79,9 @@ gulp.task('build', [
 gulp.task('watch', function(){
   watch([path.watch.html], function(event, cb) {
     gulp.start('html:build');
+  });
+    watch([path.watch.css], function(event, cb) {
+    gulp.start('css:build');
   });
   watch([path.watch.js], function(event, cb) {
     gulp.start('js:build');

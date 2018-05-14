@@ -1,0 +1,38 @@
+i {
+    border: solid blue;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 2px;
+}
+
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.selected {
+  background-color: #A9D0F5;
+}
+
+.main-frame {
+  min-height: 300px;
+}
+
+.route-buttons {
+  margin: 5px;
+}
